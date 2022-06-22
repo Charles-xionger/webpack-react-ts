@@ -13,6 +13,16 @@ module.exports = merge(webpackCommonConf, {
         test: /\.(png|jpg|jpeg|gif)$/,
         type: 'asset/resource'
       },
+      {
+        // 匹配json文件
+        test: /\.json$/,
+        // 将json文件视为文件类型
+        type: "asset/resource",
+        generator: {
+          // 这里专门针对json文件的处理
+          filename: "static/[name].[hash][ext][query]",
+        },
+      },
       // 样式配置
       {
         test: /\.(css|scss)$/,
